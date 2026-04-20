@@ -168,3 +168,79 @@ export const stream = pgTable(
 );
 
 export type Stream = InferSelectModel<typeof stream>;
+
+// ─── Construction Billing Schema ────────────────────────────────────────────────
+
+export const client = pgTable('Client', {
+  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  userId: uuid('userId').notNull().references(() => user.id),
+  name: varchar('name', { length: 255 }).notNull(),
+  email: varchar('email', { length: 128 }),
+  phone: varchar('phone', { length: 32 }),
+  address: text('address'),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+});
+
+export type Client = InferSelectModel<typeof client>;
+
+export const project = pgTable('Project', {
+  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  userId: uuid('userId').notNull().references(() => user.id),
+  clientId: uuid('clientId').notNull().references(() => client.id),
+  name: varchar('name', { length: 255 }).notNull(),
+  description: text('description'),
+  value: varchar('value', { length: 64 }).notNull().default('0'),
+  status: varchar('status', { length: 32 }).notNull().default('draft'),
+  startDate: timestamp('startDate'),
+  endDate: timestamp('endDate'),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+});
+
+export type Project = InferSelectModel<typeof project>;
+
+export const invoice = pgTable('Invoice', {
+  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  userId: uuid('userId').notNull().references(() => user.id),
+  clientId: uuid('clientId').notNull().references(() => client.id),
+  projectId: uuid('projectId').references(() => project.id),
+  invoiceNumber: varchar('invoiceNumber', { length: 64 }).notNull(),
+  status: varchar('status', { length: 32 }).notNull().default('draft'),
+  issueDate: timestamp('issueDate').notNull().defaultNow(),
+  dueDate: timestamp('dueDate'),
+  subtotal: varchar('subtotal', { length: 64 }).notNull().default('0'),
+  taxRate: varchar('taxRate', { length: 8 }).notNull().default('0'),
+  taxAmount: varchar('taxAmount', { length: 64 }).notNull().default('0'),
+  total: varchar('total', { length: 64 }).notNull().default('0'),
+  notes: text('notes'),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+});
+
+export type Invoice = InferSelectModel<typeof invoice>;
+
+export const invoiceLineItem = pgTable('InvoiceLineItem', {
+  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  invoiceId: uuid('invoiceId').notNull().references(() => invoice.id),
+  description: text('description').notNull(),
+  quantity: varchar('quantity', { length: 20 }).notNull().default('1'),
+  unitPrice: varchar('unitPrice', { length: 64 }).notNull().default('0'),
+  total: varchar('total', { length: 64 }).notNull().default('0'),
+  sortOrder: varchar('sortOrder', { length: 8 }).notNull().default('0'),
+});
+
+export type InvoiceLineItem = InferSelectModel<typeof invoiceLineItem>;
+
+export const payment = pgTable('Payment', {
+  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  userId: uuid('userId').notNull().references(() => user.id),
+  invoiceId: uuid('invoiceId').notNull().references(() => invoice.id),
+  amount: varchar('amount', { length: 64 }).notNull().default('0'),
+  method: varchar('method', { length: 32 }),
+  reference: varchar('reference', { length: 128 }),
+  paidAt: timestamp('paidAt').notNull().defaultNow(),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+});
+
+export type Payment = InferSelectModel<typeof payment>;
