@@ -173,7 +173,9 @@ export type Stream = InferSelectModel<typeof stream>;
 
 export const client = pgTable('Client', {
   id: uuid('id').primaryKey().notNull().defaultRandom(),
-  userId: uuid('userId').notNull().references(() => user.id),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => user.id),
   name: varchar('name', { length: 255 }).notNull(),
   email: varchar('email', { length: 128 }),
   phone: varchar('phone', { length: 32 }),
@@ -189,8 +191,12 @@ export type Client = InferSelectModel<typeof client>;
 
 export const project = pgTable('Project', {
   id: uuid('id').primaryKey().notNull().defaultRandom(),
-  userId: uuid('userId').notNull().references(() => user.id),
-  clientId: uuid('clientId').notNull().references(() => client.id),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => user.id),
+  clientId: uuid('clientId')
+    .notNull()
+    .references(() => client.id),
   name: varchar('name', { length: 255 }).notNull(),
   description: text('description'),
   value: varchar('value', { length: 64 }).notNull().default('0'),
@@ -208,8 +214,12 @@ export type Project = InferSelectModel<typeof project>;
 
 export const invoice = pgTable('Invoice', {
   id: uuid('id').primaryKey().notNull().defaultRandom(),
-  userId: uuid('userId').notNull().references(() => user.id),
-  clientId: uuid('clientId').notNull().references(() => client.id),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => user.id),
+  clientId: uuid('clientId')
+    .notNull()
+    .references(() => client.id),
   projectId: uuid('projectId').references(() => project.id),
   invoiceNumber: varchar('invoiceNumber', { length: 64 }).notNull(),
   status: varchar('status', { length: 32 }).notNull().default('draft'),
@@ -231,7 +241,9 @@ export type Invoice = InferSelectModel<typeof invoice>;
 
 export const invoiceLineItem = pgTable('InvoiceLineItem', {
   id: uuid('id').primaryKey().notNull().defaultRandom(),
-  invoiceId: uuid('invoiceId').notNull().references(() => invoice.id),
+  invoiceId: uuid('invoiceId')
+    .notNull()
+    .references(() => invoice.id),
   description: text('description').notNull(),
   quantity: varchar('quantity', { length: 20 }).notNull().default('1'),
   unitPrice: varchar('unitPrice', { length: 64 }).notNull().default('0'),
@@ -243,8 +255,12 @@ export type InvoiceLineItem = InferSelectModel<typeof invoiceLineItem>;
 
 export const payment = pgTable('Payment', {
   id: uuid('id').primaryKey().notNull().defaultRandom(),
-  userId: uuid('userId').notNull().references(() => user.id),
-  invoiceId: uuid('invoiceId').notNull().references(() => invoice.id),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => user.id),
+  invoiceId: uuid('invoiceId')
+    .notNull()
+    .references(() => invoice.id),
   amount: varchar('amount', { length: 64 }).notNull().default('0'),
   method: varchar('method', { length: 32 }),
   reference: varchar('reference', { length: 128 }),

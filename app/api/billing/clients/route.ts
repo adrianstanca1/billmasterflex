@@ -1,7 +1,7 @@
-import { type NextRequest } from 'next/server';
+import type { NextRequest } from 'next/server';
 import { auth } from '@/app/(auth)/auth';
 import { db } from '@/lib/db';
-import { client, type Client } from '@/lib/db/schema';
+import { client } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
 export async function GET() {

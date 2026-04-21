@@ -15,7 +15,8 @@ test.describe
         throw new Error('Failed to load page');
       }
 
-      let request: ReturnType<typeof response.request> | null = response.request();
+      let request: ReturnType<typeof response.request> | null =
+        response.request();
 
       const chain = [];
 
@@ -57,7 +58,8 @@ test.describe
         throw new Error('Failed to load page');
       }
 
-      let request: ReturnType<typeof response.request> | null = response.request();
+      let request: ReturnType<typeof response.request> | null =
+        response.request();
 
       const chain = [];
 
