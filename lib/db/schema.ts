@@ -179,7 +179,10 @@ export const client = pgTable('Client', {
   phone: varchar('phone', { length: 32 }),
   address: text('address'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
-  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt')
+    .notNull()
+    .defaultNow()
+    .$onUpdateFn(() => new Date()),
 });
 
 export type Client = InferSelectModel<typeof client>;
@@ -195,7 +198,10 @@ export const project = pgTable('Project', {
   startDate: timestamp('startDate'),
   endDate: timestamp('endDate'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
-  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt')
+    .notNull()
+    .defaultNow()
+    .$onUpdateFn(() => new Date()),
 });
 
 export type Project = InferSelectModel<typeof project>;
@@ -215,7 +221,10 @@ export const invoice = pgTable('Invoice', {
   total: varchar('total', { length: 64 }).notNull().default('0'),
   notes: text('notes'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
-  updatedAt: timestamp('updatedAt').notNull().defaultNow(),
+  updatedAt: timestamp('updatedAt')
+    .notNull()
+    .defaultNow()
+    .$onUpdateFn(() => new Date()),
 });
 
 export type Invoice = InferSelectModel<typeof invoice>;
