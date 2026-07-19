@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "~patterns/*": ["/Users/adrianstanca/patterns/src/*"]
     }
   },
   "include": [
