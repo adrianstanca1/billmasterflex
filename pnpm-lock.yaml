@@ -16,10 +16,10 @@ importers:
         version: 2.0.0-beta.1
       '@ai-sdk/react':
         specifier: 2.0.0-beta.6
-        version: 2.0.0-beta.6(react@19.0.0-rc-45804af1-20241021)(zod@3.25.68)
+        version: 2.0.0-beta.6(react@19.0.0-rc-45804af1-20241021)(zod@4.6.6)
       '@ai-sdk/xai':
         specifier: 2.0.0-beta.2
-        version: 2.0.0-beta.2(zod@3.25.68)
+        version: 2.0.0-beta.2(zod@4.6.6)
       '@codemirror/lang-javascript':
         specifier: ^6.2.5
         version: 6.2.5
@@ -88,7 +88,7 @@ importers:
         version: 0.10.0
       ai:
         specifier: 5.0.52
-        version: 5.0.52(zod@3.25.68)
+        version: 5.0.52(zod@4.6.6)
       bcrypt-ts:
         specifier: ^5.0.2
         version: 5.0.3
@@ -213,8 +213,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.1(react@19.0.0-rc-45804af1-20241021)
       zod:
-        specifier: ^3.25.68
-        version: 3.25.68
+        specifier: ^4.6.6
+        version: 4.6.6
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -1261,6 +1261,7 @@ packages:
   '@opentelemetry/sdk-trace-base@1.30.1':
     resolution: {integrity: sha512-jVPgBbH1gCy2Lb7X0AVQ8XAfgg0pJ4nvl8/IiQA6nxOsPvS+0zMJaFSs2ltXe0J6C8dqjcnpyqINDJmU30+uOg==}
     engines: {node: '>=14'}
+    deprecated: Use @opentelemetry/sdk-trace package
     peerDependencies:
       '@opentelemetry/api': '>=1.0.0 <1.10.0'
 
@@ -4402,46 +4403,49 @@ packages:
     peerDependencies:
       zod: ^3.25 || ^4
 
-  zod@3.25.68:
-    resolution: {integrity: sha512-2APbrl2EQHZRaSvpUZNKWKAJNKwG9sNgDqmd+Y2o/C9UmsB2ClDwE9+/cfxPSkwQRV45T3XPNCrXM/scQ/0TTQ==}
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
+  zod@4.6.6:
+    resolution: {integrity: sha512-4UmzQUF5fxvfcYHlbjBmejU+w+hbDnWFx4aS8kBx7nPBHcO2SqPbpAG8snbdg+Xse4pRefR98hgjFgIMCI/UhA==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
 
-  '@ai-sdk/gateway@1.0.0-beta.3(zod@3.25.68)':
+  '@ai-sdk/gateway@1.0.0-beta.3(zod@4.6.6)':
     dependencies:
       '@ai-sdk/provider': 2.0.0-beta.1
-      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@3.25.68)
-      zod: 3.25.68
+      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@4.6.6)
+      zod: 4.6.6
 
-  '@ai-sdk/gateway@1.0.29(zod@3.25.68)':
+  '@ai-sdk/gateway@1.0.29(zod@4.6.6)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.9(zod@3.25.68)
-      zod: 3.25.68
+      '@ai-sdk/provider-utils': 3.0.9(zod@4.6.6)
+      zod: 4.6.6
 
-  '@ai-sdk/openai-compatible@1.0.0-beta.2(zod@3.25.68)':
+  '@ai-sdk/openai-compatible@1.0.0-beta.2(zod@4.6.6)':
     dependencies:
       '@ai-sdk/provider': 2.0.0-beta.1
-      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@3.25.68)
-      zod: 3.25.68
+      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@4.6.6)
+      zod: 4.6.6
 
-  '@ai-sdk/provider-utils@3.0.0-beta.2(zod@3.25.68)':
+  '@ai-sdk/provider-utils@3.0.0-beta.2(zod@4.6.6)':
     dependencies:
       '@ai-sdk/provider': 2.0.0-beta.1
       '@standard-schema/spec': 1.0.0
       eventsource-parser: 3.0.3
-      zod: 3.25.68
-      zod-to-json-schema: 3.24.5(zod@3.25.68)
+      zod: 4.6.6
+      zod-to-json-schema: 3.24.5(zod@4.6.6)
 
-  '@ai-sdk/provider-utils@3.0.9(zod@3.25.68)':
+  '@ai-sdk/provider-utils@3.0.9(zod@4.6.6)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
       '@standard-schema/spec': 1.1.0
       eventsource-parser: 3.1.1
-      zod: 3.25.68
+      zod: 4.6.6
 
   '@ai-sdk/provider@2.0.0':
     dependencies:
@@ -4451,22 +4455,22 @@ snapshots:
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/react@2.0.0-beta.6(react@19.0.0-rc-45804af1-20241021)(zod@3.25.68)':
+  '@ai-sdk/react@2.0.0-beta.6(react@19.0.0-rc-45804af1-20241021)(zod@4.6.6)':
     dependencies:
-      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@3.25.68)
-      ai: 5.0.0-beta.6(zod@3.25.68)
+      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@4.6.6)
+      ai: 5.0.0-beta.6(zod@4.6.6)
       react: 19.0.0-rc-45804af1-20241021
       swr: 2.3.3(react@19.0.0-rc-45804af1-20241021)
       throttleit: 2.1.0
     optionalDependencies:
-      zod: 3.25.68
+      zod: 4.6.6
 
-  '@ai-sdk/xai@2.0.0-beta.2(zod@3.25.68)':
+  '@ai-sdk/xai@2.0.0-beta.2(zod@4.6.6)':
     dependencies:
-      '@ai-sdk/openai-compatible': 1.0.0-beta.2(zod@3.25.68)
+      '@ai-sdk/openai-compatible': 1.0.0-beta.2(zod@4.6.6)
       '@ai-sdk/provider': 2.0.0-beta.1
-      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@3.25.68)
-      zod: 3.25.68
+      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@4.6.6)
+      zod: 4.6.6
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -5077,7 +5081,7 @@ snapshots:
 
   '@marijn/find-cluster-break@1.0.4': {}
 
-  '@modelcontextprotocol/sdk@1.25.3(hono@4.11.7)(zod@3.25.68)':
+  '@modelcontextprotocol/sdk@1.25.3(hono@4.11.7)(zod@3.25.76)':
     dependencies:
       '@hono/node-server': 1.19.9(hono@4.11.7)
       ajv: 8.17.1
@@ -5093,8 +5097,8 @@ snapshots:
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.1
       raw-body: 3.0.2
-      zod: 3.25.68
-      zod-to-json-schema: 3.25.1(zod@3.25.68)
+      zod: 3.25.76
+      zod-to-json-schema: 3.25.1(zod@3.25.76)
     transitivePeerDependencies:
       - hono
       - supports-color
@@ -5779,21 +5783,21 @@ snapshots:
 
   acorn@8.15.0: {}
 
-  ai@5.0.0-beta.6(zod@3.25.68):
+  ai@5.0.0-beta.6(zod@4.6.6):
     dependencies:
-      '@ai-sdk/gateway': 1.0.0-beta.3(zod@3.25.68)
+      '@ai-sdk/gateway': 1.0.0-beta.3(zod@4.6.6)
       '@ai-sdk/provider': 2.0.0-beta.1
-      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@3.25.68)
+      '@ai-sdk/provider-utils': 3.0.0-beta.2(zod@4.6.6)
       '@opentelemetry/api': 1.9.0
-      zod: 3.25.68
+      zod: 4.6.6
 
-  ai@5.0.52(zod@3.25.68):
+  ai@5.0.52(zod@4.6.6):
     dependencies:
-      '@ai-sdk/gateway': 1.0.29(zod@3.25.68)
+      '@ai-sdk/gateway': 1.0.29(zod@4.6.6)
       '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.9(zod@3.25.68)
+      '@ai-sdk/provider-utils': 3.0.9(zod@4.6.6)
       '@opentelemetry/api': 1.9.0
-      zod: 3.25.68
+      zod: 4.6.6
 
   ajv-formats@3.0.1(ajv@8.17.1):
     optionalDependencies:
@@ -6550,7 +6554,7 @@ snapshots:
       '@humanfs/node': 0.16.7
       '@humanwhocodes/module-importer': 1.0.1
       '@humanwhocodes/retry': 0.4.3
-      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.7)(zod@3.25.68)
+      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.7)(zod@3.25.76)
       '@types/estree': 1.0.8
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
@@ -6575,7 +6579,7 @@ snapshots:
       minimatch: 3.1.2
       natural-compare: 1.4.0
       optionator: 0.9.4
-      zod: 3.25.68
+      zod: 3.25.76
     optionalDependencies:
       jiti: 1.21.7
     transitivePeerDependencies:
@@ -8905,14 +8909,16 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-to-json-schema@3.24.5(zod@3.25.68):
+  zod-to-json-schema@3.24.5(zod@4.6.6):
     dependencies:
-      zod: 3.25.68
+      zod: 4.6.6
 
-  zod-to-json-schema@3.25.1(zod@3.25.68):
+  zod-to-json-schema@3.25.1(zod@3.25.76):
     dependencies:
-      zod: 3.25.68
+      zod: 3.25.76
 
-  zod@3.25.68: {}
+  zod@3.25.76: {}
+
+  zod@4.6.6: {}
 
   zwitch@2.0.4: {}
