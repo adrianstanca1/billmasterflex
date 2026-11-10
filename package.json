@@ -86,7 +86,7 @@
     "tailwind-merge": "^3.5.0",
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "^3.1.0",
-    "zod": "^3.25.68"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
